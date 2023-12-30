@@ -1,0 +1,7 @@
+Introduction
+The purpose of this package is to provide a standardized and semi-automated way of recalibrating many MS1 mass spectra of DOM
+
+DOMAssignR recalibrates high resolution mass spectra of Dissolved Organic Matter (DOM) via the MFAssignR package. Requires MS1 spectra in .mzml format.
+
+Installation
+
