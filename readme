@@ -8,7 +8,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
   install.packages("remotes")
 }
 remotes::install_github("simonschroeter/DOMAssignR")
-```python
+```
 DOMAssignR requires packages MFAssignR, MALDIquant, future, future.apply, progressr, and the tidyverse.
 
 ##Usage
