@@ -1,4 +1,6 @@
-## Introduction
+# DOMAssignR
+DOMAssignR is a wrapper around the MFAssignR package.
+
 The purpose of this package is to provide a standardized and semi-automated way of recalibrating any number of MS1 mass spectra of Dissolved Organic Matter (DOM) locally on your device. This package allows for parallelized use of functions provided in package MFAssignR. Requires averaged and centroided MS1 spectra in .mzml format. Example data is available from: @ADDDOIHERE.
 
 ## Installation
