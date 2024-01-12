@@ -23,3 +23,9 @@ Further options for inspecting the recalibration quality are recalRange() to sho
 Before proceeding to sum formula assignment, all recalibrated spectra are joined with junction(). The default tolerance for m/z values of different spectra to be considered equal is 0.5 ppm.
 
 Sum formula assignment with assignSumFormulas() works equal to MFAssign(). The proportion of intensity remaining among the assigned sum formulas compared to the raw data can be assessed with intensityRatio() and commonly ranges between 60 and 80%.
+
+## Acknowledgments
+This package was developed at the Max Planck Institute for Biogeochemistry, Jena, Germany within the Collaborative Research Centre AquaDiva of the Friedrich Schiller University Jena, funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation)—SFB 1076—Project Number 218627073.
+
+## Disclaimer
+Functionality on different machines is still being evaluated. Any feedback is highly appreciated.
