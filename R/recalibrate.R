@@ -5,7 +5,7 @@
 #' @param ionizationMode "neg" or "pos"
 #' @param LowMassLimit Lower end of the measured mass range in Da (default 100)
 #' @param HighMassLimit Upper end of the measured mass range in Da (default 1000)
-#' @param CHO_assign_error Error tolerance for preliminary sum formula assignment in ppm (default 2.5)
+#' @param CHO_assign_error Error tolerance for preliminary sum formula assignment in ppm (default 3)
 #' @param SN_recal Minimum signal-to-noise ratio for peaks to be used as potential recalibrants (default 10)
 #' @param RecalRangeCheck TRUE/FALSE  Require that the recalibration covers a specified mass range (set below, default TRUE)
 #' @param recalRange TRUE/FALSE  Sample must be recalibrated within this entire range, else the sample is reported as having failed recalibration (default c(50, 500))
@@ -22,7 +22,7 @@ recalilbrate <- function(import,
                      ionizationMode,  #'neg' or 'pos'
                      LowMassLimit,  #What is the lower limit of the mass range in your scans?
                      HighMassLimit,  #What is the upper limit of the mass range in your scans?
-                     CHO_assign_error = 2.5, #allowed error range (in ppm) for CHO sum formula assignment. Needs to be kind of high, because the data is not recalibrated at this point.
+                     CHO_assign_error = 3, #allowed error range (in ppm) for CHO sum formula assignment. Needs to be kind of high, because the data is not recalibrated at this point.
                      SN_recal = 10,  #Signal to noise ratio during import.  Low intensities commonly lead to high recalibration errors(>1ppm). Lower this value if you have trouble finding recalibrants.
                      RecalRangeCheck = TRUE, #require that the recalibration covers a specified mass range (set below)
                      recalRange = c(150,500), #Sample must be recalibrated within this entire range, else the sample is reported as failed recalibration.
