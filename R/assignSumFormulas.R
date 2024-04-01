@@ -135,7 +135,7 @@ assigned <- MFAssignR::MFAssign(peaks = assignMonoIso$Mono, isopeaks = assignMon
 if(any(duplicated(join$formula))){
   join <-
     join %>%
-    dplyr::distinct(formula, .keep_all = TRUE)
+    dplyr::filter(!formula %in% unique(join$formula[duplicated(join$formula)]))
 }
 
 join <- dplyr::inner_join(x=assigned$Unambig, y=junction_output, by = c("exp_mass" = "mz")) %>%
