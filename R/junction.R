@@ -61,5 +61,11 @@ junction_output <- dplyr::arrange(junction_input,mz) %>%
   dplyr::filter(!duplicated(mz)) %>%
   dplyr::arrange(mz)
 
+duplicates5digits <- junction_output$mz[duplicated(round(junction_output$mz,5))]
+
+junction_output <- junction_output %>%
+  dplyr::filter(!mz %in% duplicates5digits) %>%
+  dplyr::mutate(mz = round(mz,5))
+
 return(junction_output)
 }
