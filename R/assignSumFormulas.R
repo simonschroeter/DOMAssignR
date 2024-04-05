@@ -83,7 +83,7 @@ assignSumFormulas <- function(junction_output,
 assignMonoIso <- MFAssignR::IsoFiltR(peaks = data.frame(mz=junction_output$mz,
                                                         abundance = junction_output %>% dplyr::select(dplyr::starts_with(c("mz","Sample"))) %>% tidyr::pivot_longer(cols = dplyr::starts_with("Sample"), values_drop_na = TRUE) %>% dplyr::group_by(mz) %>% dplyr::summarize(abundance_max = max(value)) %>% dplyr::pull(abundance_max)))
 
-assigned <- MFAssignR::MFAssign(peaks = assignMonoIso$Mono, isopeaks = assignMonoIso$Iso, 
+assigned <- MFAssignR::MFAssignRMD(peaks = assignMonoIso$Mono, isopeaks = assignMonoIso$Iso, 
                      ionMode = ionizationMode, lowMW = LowMassLimit, 
                      highMW = HighMassLimit, 
                      ppm_err = assign_error,
@@ -132,15 +132,14 @@ assigned <- MFAssignR::MFAssign(peaks = assignMonoIso$Mono, isopeaks = assignMon
                      N3corr = set_N3corr)
 
 
-if(any(duplicated(join$formula))){
-  join <-
-    join %>%
-    dplyr::filter(!formula %in% unique(join$formula[duplicated(join$formula)]))
-}
-
-join <- dplyr::inner_join(x=assigned$Unambig, y=junction_output, by = c("exp_mass" = "mz")) %>%
+assigned <- dplyr::inner_join(x=assigned$Unambig, y=junction_output, by = c("exp_mass" = "mz")) %>%
   dplyr::select(-abundance)
 
+if(any(duplicated(assigned$formula))){
+  assigned <-
+    assigned %>%
+    dplyr::filter(!formula %in% unique(assigned$formula[duplicated(assigned$formula)]))
+}
 
-return(join)
+return(assigned)
 }
