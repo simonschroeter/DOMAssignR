@@ -16,7 +16,7 @@ recalPlot <- function(recal_result, sample_nr) {
 #OPTIONAL MANUAL CHECKS
 #DETAILED QUALITY ASSESSMENT WITH RECALIBRATION MASS ERROR PLOTS
 #resulting mass_error should be less than 1ppm
-
+library(patchwork)
 ggplot2::ggplot(data.frame(mass = recal_result[[sample_nr]][[1]]$RecalList$exp_mass,
                   intensity = recal_result[[sample_nr]][[1]]$RecalList$abundance), ggplot2::aes(x=mass, y = intensity))+
   
