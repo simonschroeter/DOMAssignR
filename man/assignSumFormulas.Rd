@@ -70,7 +70,7 @@ assignSumFormulas(
 
 \item{set_Sx}{Number of Sulphur atoms allowed (default 1)}
 
-\item{set_Px}{Number of Phosphorous atoms allowed (default 1)}
+\item{set_Px}{Number of Phosphorous atoms allowed (default 0)}
 
 \item{set_S34x}{Number of Sulphur-34 atoms allowed (default 0)}
 
