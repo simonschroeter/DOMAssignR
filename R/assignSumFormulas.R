@@ -34,7 +34,7 @@ assignSumFormulas <- function(junction_output,
                               #ELEMENT SETTINGS
                                set_Nx = 4,
                                set_Sx = 1,
-                               set_Px = 1,
+                               set_Px = 0,
                                set_S34x = 0,
                                set_N15x = 0,
                                set_Dx = 0,
