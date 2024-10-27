@@ -19,7 +19,7 @@
 #' @export
 
 
-recalilbrate <- function (import, ionizationMode, LowMassLimit, HighMassLimit, 
+recalibrate <- function (import, ionizationMode, LowMassLimit, HighMassLimit, 
           CHO_assign_error = 3, SN_recal = 10, RecalRangeCheck = TRUE, 
           recalRange = c(150, 500), AutoUpperLimit = TRUE, AutoUpperLimitTarget = 0.8, 
           Nitrogen_recal = 0, max_loop = 3, parallel = TRUE, AttemptFixingErrors = FALSE) 
