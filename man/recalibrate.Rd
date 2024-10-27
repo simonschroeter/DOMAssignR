@@ -17,6 +17,7 @@ recalilbrate(
   AutoUpperLimitTarget = 0.8,
   Nitrogen_recal = 0,
   max_loop = 3,
+  AttemptFixingErrors = FALSE,
   parallel = TRUE
 )
 }
@@ -44,6 +45,8 @@ recalilbrate(
 \item{Nitrogen_recal}{Number of N atoms allowed in inital sum formula assignment (default 0)}
 
 \item{max_loop}{Maximum number of attempts at fixing recalibration errors (default 3)}
+
+\item{AttemptFixingErrors}{TRUE/FALSE In case recaclibration fails, try with just a single recalibration series instead. This setting automatically results in no RecalRangeCheck for those attempts. (default FALSE)}
 
 \item{parallel}{Allow parallel execution? (default TRUE)}
 }
