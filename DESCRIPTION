@@ -1,5 +1,5 @@
 Package: DOMAssignR
 Type: Package
 Title: A wrapper around MFAssignR
-Version: 0.0.1.0
+Version: 0.0.1.1
 RoxygenNote: 7.2.3
