@@ -40,12 +40,22 @@ recalibrate <- function (import, ionizationMode, LowMassLimit, HighMassLimit,
       recal_result <- future.apply::future_lapply(import, 
                                                   FUN = function(x) {
                                                     p("recalibrating...")
-                                                    assignCHO <- try(MFAssignR::MFAssign_RMD(peaks = x[[1]]$Mono, 
+                                                    if (Nitrogen_recal > 0) {
+                                                            assignCHO <- try(MFAssignR::MFAssign_RMD(peaks = x[[1]]$Mono, 
                                                                                              isopeaks = x[[1]]$Iso, ionMode = ionizationMode, 
                                                                                              lowMW = LowMassLimit, highMW = HighMassLimit, 
                                                                                              ppm_err = CHO_assign_error, SN = SN_recal * 
                                                                                                x[[2]], Nx = Nitrogen_recal)$Unambig, 
                                                                      silent = TRUE)
+                                                              }
+                                                        if (Nitrogen_recal == 0) {
+                                                            assignCHO <- try(MFAssignR::MFAssignCHO_RMD(peaks = x[[1]]$Mono, 
+                                                                                             isopeaks = x[[1]]$Iso, ionMode = ionizationMode, 
+                                                                                             lowMW = LowMassLimit, highMW = HighMassLimit, 
+                                                                                             ppm_err = CHO_assign_error, SN = SN_recal * 
+                                                                                               x[[2]])$Unambig, 
+                                                                     silent = TRUE)
+                                                              }     
                                                     df_recal <- try(MFAssignR::RecalList(assignCHO) %>%
                                                                       dplyr::filter(substr(Series,1,1) != "_"), 
                                                                     silent = TRUE)
@@ -162,7 +172,12 @@ recalibrate <- function (import, ionizationMode, LowMassLimit, HighMassLimit,
                                                           )
                                                           z <- z+1
                                                             }
-                                                          howdiditgo <- paste("Attempted fixing previous errors by using just one recalibration series.")
+                                                          if (class(recal_output) == "list") {
+                                                                    howdiditgo <- paste("Successfully recalibrated with only one homologous series. Proceed with caution.")
+                                                          }
+                                                            if (class(recal_output) == "try-error"){
+                                                                      howdiditgo <- paste("Recalibration errors remained after attempting recalibration with only one homologous series.")
+                                                            }
                                                         }
                                                       }
                                                     }
