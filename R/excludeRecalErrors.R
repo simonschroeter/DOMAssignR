@@ -6,6 +6,6 @@
 #' @export
 
 excludeRecalErrors <- function(recal_result) {
-  recal_result <- recal_result[which(sapply(recal_result, function(x){x[[3]]}) == "Successfully recalibrated.")]
+  recal_result <- recal_result[which(sapply(recal_result, function(x){x[[3]]}) %in% c("Successfully recalibrated.","Successfully recalibrated with only one homologous series. Proceed with caution."))]
   return(recal_result)
 }
