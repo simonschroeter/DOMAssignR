@@ -21,7 +21,7 @@ recalEval <- function(import,
   if(any(!sapply(recal_result, function(x){x[[3]]}) %in% c("Successfully recalibrated.","Successfully recalibrated with only one homologous series. Proceed with caution."))){
   for (i in 1:length(recal_result)){
     if(i==1){print("The following samples could not be recalibrated:")}
-    if(recal_result[[i]][[3]] %in% c("Successfully recalibrated.","Successfully recalibrated with only one homologous series. Proceed with caution.")){
+    if(!recal_result[[i]][[3]] %in% c("Successfully recalibrated.","Successfully recalibrated with only one homologous series. Proceed with caution.")){
       print(paste0("Sample",i, ": ", recal_result[[i]][4]))
     }}
   if(!any(!sapply(recal_result, function(x){x[[3]]}) %in% c("Successfully recalibrated.","Successfully recalibrated with only one homologous series. Proceed with caution."))) {print("none")}
